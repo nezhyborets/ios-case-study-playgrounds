@@ -14,8 +14,9 @@ import PlaygroundSupport
  
  2. "sync from sync" - the execution stops on _dispatch_barrier_sync_f_slow (you cannot see it in playground, but that's what real project says in backtrace)
     It may obvious that this fails, but I'd like to go "why?":
-    We have on thread (associated with aQueue) that executes both blocks. When we dispatch_sync a fromClosure to aQueue - it starts the execution as expected. But when we dispatch_sync aClosure to the same queue, it stops the execution and waits for aClosure to finish. But this aQueue that just stopped is the one that we dispatched aClosure to. So there is no way aClosure can finish. I think it's called a "Dead Lock"
+    We have on thread (associated with aQueue) that executes both blocks. When we dispatch_sync a fromClosure to aQueue - it starts the execution as expected. But then we, still being on aQueue, do dispatch_sync aClosure to the same aQueue, it suspends the execution in the middle of fromClosure until aClosure is finished. But this aQueue that just stopped is the one that we dispatched aClosure to. So there is no way aClosure can finish. I think it's called a "Dead Lock"
  
+    Note: it doesn't matter if dispatch_sync(aQueue,aClosure) is the last call in fromClosure or not, the queue gets suspended in the middle of fromClosure anyway
  3. "sync from async" - _dispatch_barrier_sync_f_slow (same as sync from sync)
     Same issue is applied here. We dispatched a fromClosure to an aQueue, and then we dispatched aClosure to same aQueue, so this aQueue is the one that should've execute an aClosure, but since we called it with dispatch_sync - the thread simply stopped.
  
@@ -31,7 +32,7 @@ enum Setup {
     case asyncFromSync
 }
 
-let setup = Setup.syncFromSync
+let setup = Setup.syncFromAsync
 let queue = DispatchQueue(label: "JustAQueue")
 
 switch setup {
