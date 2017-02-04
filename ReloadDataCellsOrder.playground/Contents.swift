@@ -9,6 +9,8 @@ import PlaygroundSupport
  Furthermore, we can see that it actually has some kind of backward order, but it doesn't seem to be useful. This order doesn't seem to depend on flow layout scroll direction.
  
  As a side note, we can see that UICollectionView instance calls reloadData() implicitly when we set it's dataSource (as opposite to that same for instance of UITableView)
+ 
+ Background (reason for research): Image blinking inside cell when reloading cells using reloadData(). There should be no reason to clear image on prepareForReuse (or similar) if a given cell was already display the given image and this image didn't change on reloadData().
  */
 
 PlaygroundPage.current.needsIndefiniteExecution = true
