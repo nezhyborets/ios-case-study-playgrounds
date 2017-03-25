@@ -14,7 +14,7 @@ import PlaygroundSupport
  
  2. "sync from sync" - the execution stops on _dispatch_barrier_sync_f_slow (you cannot see it in playground, but that's what real project says in backtrace)
     It may obvious that this fails, but I'd like to go "why?":
-    We have on thread (associated with aQueue) that executes both blocks. When we dispatch_sync a fromClosure to aQueue - it starts the execution as expected. But then we, still being on aQueue, do dispatch_sync aClosure to the same aQueue, it suspends the execution in the middle of fromClosure until aClosure is finished. But this aQueue that just stopped is the one that we dispatched aClosure to. So there is no way aClosure can finish. I think it's called a "Dead Lock"
+    We have one thread (associated with aQueue) that executes both blocks. When we dispatch_sync a fromClosure to aQueue - it starts the execution as expected. But then we, still being on aQueue, do dispatch_sync aClosure to the same aQueue, it suspends the execution in the middle of fromClosure until aClosure is finished. But this aQueue that just stopped is the one that we dispatched aClosure to. So there is no way aClosure can finish. I think it's called a "Dead Lock"
  
     Note: it doesn't matter if dispatch_sync(aQueue,aClosure) is the last call in fromClosure or not, the queue gets suspended in the middle of fromClosure anyway
  3. "sync from async" - _dispatch_barrier_sync_f_slow (same as sync from sync)
