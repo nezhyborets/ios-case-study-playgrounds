@@ -6,8 +6,8 @@ struct SomeStruct {
 
 }
 
-/* 
- Structs cannot inherit, so will get an error:
+/*
+ 1) Structs cannot inherit, so will get an error:
  "Inheritance from non-protocol type 'SomeStruct'
  */
 //struct SomeStructExtended : SomeStruct {
@@ -18,3 +18,8 @@ let anyStruct : Any = SomeStruct()
 if let someStruct = anyStruct as? SomeStruct {
 
 }
+
+/*
+ 2) Arrays can contain optional
+ */
+let arrayOfOptional : [Int?] = []
