@@ -8,9 +8,11 @@
 
 #import "Test1.h"
 
+@interface Test1()
+@property (nonatomic, strong) NSObject *prop;
+@end
 
 @implementation Test1 {
-    NSString *stringProp;
 }
 
 - (instancetype)init {
@@ -23,20 +25,19 @@
 }
 
 - (void)test {
-    dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
-        dispatch_apply(10000000, dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^(size_t i) {
-            stringProp = [[NSString alloc] initWithFormat:@"%lu", i];
-        });
-    });
+    for (int i = 0; i < 20; i++) {
+        [self dispatch:[NSString stringWithFormat:@"%ul", i]];
+    }
+}
 
-    dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
-        dispatch_apply(100000, dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^(size_t i) {
-            NSString *string = stringProp;
-            [self print:string];
+- (void)dispatch:(NSString *)label {
+    dispatch_queue_t dispatchQueue = dispatch_queue_create([label UTF8String], DISPATCH_QUEUE_CONCURRENT);
+    dispatch_async(dispatchQueue, ^{
+        dispatch_apply(10000000000, dispatchQueue, ^(size_t i) {
+            self.prop = [[NSObject alloc] init];
         });
     });
 }
-
 
 - (void)print:(NSString * __unsafe_unretained)string {
     NSLog(@"%@", string);
