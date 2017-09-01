@@ -20,5 +20,5 @@ Action:
 There is a chance you'll get in trouble after popping back from second controller. By trouble I mean that UISearchView will become visible again, though you scrolled to hide it few moments ago. You'll get into this both if your first controller has `automaticallyAdjustsScrollViewInsets` set to `true` AND if it's set to `false`, but `edgesForExtendedLayout` is set only to `[.top]` (Under Top Bars if you use storyboards).
 
 Solution:  
-Adding `.bottom` (Under Bottom Bars) to `edgesForExtendedLayout` seems to fix the issue for me.
-
+Adding `.bottom` (Under Bottom Bars) to `edgesForExtendedLayout` seems to fix the issue for me.  
+**Note:** This seem to be working only if `tabBarController.tabBar` is `translucent`
