@@ -22,3 +22,6 @@ There is a chance you'll get in trouble after popping back from second controlle
 Solution:  
 Adding `.bottom` (Under Bottom Bars) to `edgesForExtendedLayout` seems to fix the issue for me.  
 **Note:** This seem to be working only if `tabBarController.tabBar` is `translucent`
+
+Playground project:  
+TableViewWithSearchViewContentOffset
