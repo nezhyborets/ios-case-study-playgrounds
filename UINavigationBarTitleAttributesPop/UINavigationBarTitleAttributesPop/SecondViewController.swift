@@ -9,11 +9,22 @@
 import UIKit
 
 class SecondViewController: UIViewController {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+        title = "ViewController222"
+        
+        navigationItem.largeTitleDisplayMode = .never
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "ViewController222"
+        self.navigationItem.largeTitleDisplayMode = .never
     }
 
     override func viewWillAppear(_ animated: Bool) {

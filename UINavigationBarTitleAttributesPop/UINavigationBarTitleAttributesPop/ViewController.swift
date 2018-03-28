@@ -20,7 +20,19 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.yellow]
+        let navBar = navigationController!.navigationBar
+        let closure = {
+            navBar.titleTextAttributes = [.foregroundColor: UIColor.yellow]
+            navBar.largeTitleTextAttributes = [.foregroundColor: UIColor.yellow]
+        }
+
+        if let transitionCoordinator = self.transitionCoordinator {
+            transitionCoordinator.animateAlongsideTransition(in: navBar, animation: { (_) in
+                closure()
+            }, completion: nil)
+        } else {
+            closure()
+        }
     }
 
     override func didReceiveMemoryWarning() {
