@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BA277756FC12426C286A249 /* Pods_SizeProportionalToSizeWithinMargins.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0321AF6342ED336C641678B /* Pods_SizeProportionalToSizeWithinMargins.framework */; };
 		CC376FC7206B8CAB00B8FC47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC376FC6206B8CAB00B8FC47 /* AppDelegate.swift */; };
 		CC376FC9206B8CAB00B8FC47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC376FC8206B8CAB00B8FC47 /* ViewController.swift */; };
 		CC376FCC206B8CAB00B8FC47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC376FCA206B8CAB00B8FC47 /* Main.storyboard */; };
@@ -15,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E5912CE5A64B9173293579E /* Pods-SizeProportionalToSizeWithinMargins.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SizeProportionalToSizeWithinMargins.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SizeProportionalToSizeWithinMargins/Pods-SizeProportionalToSizeWithinMargins.debug.xcconfig"; sourceTree = "<group>"; };
+		5F92C20D6E8E84D584AEB02D /* Pods-SizeProportionalToSizeWithinMargins.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SizeProportionalToSizeWithinMargins.release.xcconfig"; path = "Pods/Target Support Files/Pods-SizeProportionalToSizeWithinMargins/Pods-SizeProportionalToSizeWithinMargins.release.xcconfig"; sourceTree = "<group>"; };
 		CC376FC3206B8CAA00B8FC47 /* SizeProportionalToSizeWithinMargins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SizeProportionalToSizeWithinMargins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC376FC6206B8CAB00B8FC47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC376FC8206B8CAB00B8FC47 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		CC376FCD206B8CAB00B8FC47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC376FD0206B8CAB00B8FC47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC376FD2206B8CAB00B8FC47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0321AF6342ED336C641678B /* Pods_SizeProportionalToSizeWithinMargins.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SizeProportionalToSizeWithinMargins.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BA277756FC12426C286A249 /* Pods_SizeProportionalToSizeWithinMargins.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		337149F83DFA0B4220728CF5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E0321AF6342ED336C641678B /* Pods_SizeProportionalToSizeWithinMargins.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CC376FBA206B8CAA00B8FC47 = {
 			isa = PBXGroup;
 			children = (
 				CC376FC5206B8CAA00B8FC47 /* SizeProportionalToSizeWithinMargins */,
 				CC376FC4206B8CAA00B8FC47 /* Products */,
+				F042272D2205B46CE72D2C67 /* Pods */,
+				337149F83DFA0B4220728CF5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +79,15 @@
 			path = SizeProportionalToSizeWithinMargins;
 			sourceTree = "<group>";
 		};
+		F042272D2205B46CE72D2C67 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5E5912CE5A64B9173293579E /* Pods-SizeProportionalToSizeWithinMargins.debug.xcconfig */,
+				5F92C20D6E8E84D584AEB02D /* Pods-SizeProportionalToSizeWithinMargins.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC376FD5206B8CAB00B8FC47 /* Build configuration list for PBXNativeTarget "SizeProportionalToSizeWithinMargins" */;
 			buildPhases = (
+				664D857B721276350B31C1A0 /* [CP] Check Pods Manifest.lock */,
 				CC376FBF206B8CAA00B8FC47 /* Sources */,
 				CC376FC0206B8CAA00B8FC47 /* Frameworks */,
 				CC376FC1206B8CAA00B8FC47 /* Resources */,
+				7DC0C156C8DBA2CB86A6C8EC /* [CP] Embed Pods Frameworks */,
+				6A922A0FAB115057B3F87E47 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		664D857B721276350B31C1A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SizeProportionalToSizeWithinMargins-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A922A0FAB115057B3F87E47 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SizeProportionalToSizeWithinMargins/Pods-SizeProportionalToSizeWithinMargins-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7DC0C156C8DBA2CB86A6C8EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SizeProportionalToSizeWithinMargins/Pods-SizeProportionalToSizeWithinMargins-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SizeProportionalToSizeWithinMargins/Pods-SizeProportionalToSizeWithinMargins-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CC376FBF206B8CAA00B8FC47 /* Sources */ = {
@@ -272,6 +353,7 @@
 		};
 		CC376FD6206B8CAB00B8FC47 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E5912CE5A64B9173293579E /* Pods-SizeProportionalToSizeWithinMargins.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +369,7 @@
 		};
 		CC376FD7206B8CAB00B8FC47 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F92C20D6E8E84D584AEB02D /* Pods-SizeProportionalToSizeWithinMargins.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
