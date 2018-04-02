@@ -1,0 +1,6 @@
+framework module Pods_SizeProportionalToSizeWithinMargins {
+  umbrella header "Pods-SizeProportionalToSizeWithinMargins-umbrella.h"
+
+  export *
+  module * { export * }
+}

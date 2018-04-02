@@ -1,7 +1,7 @@
 # ios-case-study-playgrounds
 These are just my investigation into different iOS/Mac Swift/Objective-C issues and approaches. Anyone is welcome into discussion and making new decisions
 
-### hidesBottomBarWhenPushed with UITabBarController
+### hidesBottomBarWhenPushed with UITabBarController: Apple's implemenetation
 Dive into what happens when we use hidesBottomBarWhenPushed for view controller being pushed onto UINavigationController that is on of UITabBarController's viewController's.
 
 We can see that UITabBar is being copied to the previous top view controller and removed from UITabBarController's view at the start of push, and being completely removed from window's hierarchy when push ends.
@@ -20,5 +20,8 @@ Action:
 There is a chance you'll get in trouble after popping back from second controller. By trouble I mean that UISearchView will become visible again, though you scrolled to hide it few moments ago. You'll get into this both if your first controller has `automaticallyAdjustsScrollViewInsets` set to `true` AND if it's set to `false`, but `edgesForExtendedLayout` is set only to `[.top]` (Under Top Bars if you use storyboards).
 
 Solution:  
-Adding `.bottom` (Under Bottom Bars) to `edgesForExtendedLayout` seems to fix the issue for me.
+Adding `.bottom` (Under Bottom Bars) to `edgesForExtendedLayout` seems to fix the issue for me.  
+**Note:** This seem to be working only if `tabBarController.tabBar` is `translucent`
 
+Playground project:  
+TableViewWithSearchViewContentOffset
