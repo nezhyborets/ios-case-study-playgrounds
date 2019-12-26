@@ -86,37 +86,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func test() {
         let moc = persistentContainer.viewContext
-        let id = "testId"
-        let attributed = "testAttribute"
 
         let fetchRequest: NSFetchRequest<SomeEntity> = SomeEntity.fetchRequest()
         fetchRequest.predicate = .init(format: "id == %@", id)
 
-        var object: SomeEntity
-        if let storedObject = try? moc.fetch(fetchRequest).first {
-            object = storedObject
-        } else {
-            object = SomeEntity(context: moc)
-        }
-
-        var isDifferent = false
-
-        if object.id != id {
-            isDifferent = true
-        }
+        let object = self.object(in: moc)
 
         object.id = id
         try! moc.save()
 
-        for i in 0..<1000 {
+//        testUpdatingSameFieldFromDifferentThreads()
+        testUpdateDedicatedPropertyPerThread()
+    }
+
+    private func testUpdatingSameFieldFromDifferentThreads() {
+        let attributed = "testAttribute"
+
+        for _ in 0..<1000 {
             let moc = persistentContainer.newBackgroundContext()
             moc.perform {
-                var object: SomeEntity
-                if let storedObject = try? moc.fetch(fetchRequest).first {
-                    object = storedObject
-                } else {
-                    object = SomeEntity(context: moc)
-                }
+                let object = self.object(in: moc)
+
+                var isDifferent = false
 
                 if object.testAttribute != attributed {
                     isDifferent = true
@@ -135,5 +126,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+
+    private func testUpdateDedicatedPropertyPerThread() {
+        let firstMoc = persistentContainer.newBackgroundContext()
+        let secondMoc = persistentContainer.newBackgroundContext()
+
+        for i in 0..<1000 {
+            for (index, moc) in [firstMoc, secondMoc].enumerated() {
+                moc.perform {
+                    let object = self.object(in: moc)
+                    let value = "moc\(index), \(moc), test \(i)"
+
+                    if index == 0 {
+                        object.testAttribute = value
+                        print("testAttribute \(object.testAttribute!)")
+                    } else {
+                        object.secondAttribute = value
+                        print("secondAttribute \(object.secondAttribute!)")
+                    }
+
+                    do {
+                        try moc.save()
+                    } catch {
+                        print("save error \(error)")
+                    }
+                }
+            }
+        }
+    }
+
+    private var fetchRequest: NSFetchRequest<SomeEntity> {
+        let fetchRequest: NSFetchRequest<SomeEntity> = SomeEntity.fetchRequest()
+        fetchRequest.predicate = .init(format: "id == %@", id)
+        return fetchRequest
+    }
+
+    private func object(in moc: NSManagedObjectContext) -> SomeEntity {
+        var object: SomeEntity
+        if let storedObject = try? moc.fetch(fetchRequest).first {
+            object = storedObject
+        } else {
+            object = SomeEntity(context: moc)
+        }
+
+        return object
+    }
+
+    private let id = "testId"
 }
 

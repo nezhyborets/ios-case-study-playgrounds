@@ -10,6 +10,6 @@ extension SomeEntity {
     public override func willSave() {
         super.willSave()
 
-        print("willSave")
+        print("willSave changed keys \(changedValues().keys), moc \(managedObjectContext!)")
     }
 }
