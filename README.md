@@ -25,3 +25,14 @@ Adding `.bottom` (Under Bottom Bars) to `edgesForExtendedLayout` seems to fix th
 
 Playground project:  
 TableViewWithSearchViewContentOffset
+
+### Core Data doesn't check if value is the same
+
+https://github.com/nezhyborets/ios-case-study-playgrounds/tree/master/CoreDataSaveWithoutChangesConflict
+
+This case shows that if you set value on NSManagedObject object's property, Core Data will "save" this object even if the value is the same. This may eventually lead to conflict tho nothing's changed in one of saves.
+
+Solution: always check for equality before setting new value.
+
+While studying this, i've found this important note
+> Always verify that the context has uncommitted changes (using the hasChanges property) before invoking the save: method. Otherwise, Core Data may perform unnecessary work.
