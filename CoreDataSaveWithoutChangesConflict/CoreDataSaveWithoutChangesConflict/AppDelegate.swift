@@ -106,16 +106,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         object.id = id
-
-        if object.testAttribute != attributed {
-            isDifferent = true
-        }
-
-        object.testAttribute = "testAttribute"
-
-        print("isDifferent \(isDifferent)")
-        print("moc.hasChanges \(moc.hasChanges)")
         try! moc.save()
+
+        for i in 0..<1000 {
+            let moc = persistentContainer.newBackgroundContext()
+            moc.perform {
+                var object: SomeEntity
+                if let storedObject = try? moc.fetch(fetchRequest).first {
+                    object = storedObject
+                } else {
+                    object = SomeEntity(context: moc)
+                }
+
+                if object.testAttribute != attributed {
+                    isDifferent = true
+                }
+
+                object.testAttribute = "testAttribute"
+
+                print("isDifferent \(isDifferent)")
+                print("moc.hasChanges \(moc.hasChanges)")
+
+                do {
+                    try moc.save()
+                } catch {
+                    print("save error \(error)")
+                }
+            }
+        }
     }
 }
 
