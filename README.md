@@ -36,3 +36,11 @@ Solution: always check for equality before setting new value.
 
 While studying this, i've found this important note
 > Always verify that the context has uncommitted changes (using the hasChanges property) before invoking the save: method. Otherwise, Core Data may perform unnecessary work.
+
+### UINavigationBar large title and scrollView contentOffset jump when going back, if contentSize is specific
+https://github.com/nezhyborets/ios-case-study-playgrounds/tree/master/UITableViewLargeTitle
+There was a bug, on first viewController I scroll so that large title hides, then go forward and back in navigationController (both interactively and by tapping) - my UITableView would jump twice and large title would reappear even though it shouldn't. The research lead first to blaming usage of additionalSafeAreaInsets, because debug showed that margins of viewController would change. Then I moved to playing with tableView properties like insetsLayoutMarginsFromSafeArea. Then I found that  changing sectionHeaderHeight and sectionFooterHeight in Storyboard helped.
+
+But in the end non of it was the reason. It's just the height of contentSize of any scrollView. In my example, when I run on Xs Max, only 818 height leads to bug. You can see that there is really almost no custom code, and if you change the height by one point it would work just fine.
+
+Also, don't forget that for automatic adjustment to work fine, you should change you scroll view constraints so that they snap to superview instead of safe area!
