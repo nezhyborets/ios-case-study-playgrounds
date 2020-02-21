@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ApplySnapshotIndexPaths" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="x2c-HD-wOB" customClass="DebuggingCollectionView" customModule="ApplySnapshotIndexPaths" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e7t-Zl-17N">
+                                    <size key="itemSize" width="90" height="91"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Rp2-ez-Xvj" customClass="DebuggingCollectionViewCell" customModule="ApplySnapshotIndexPaths" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="91"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OLW-Zs-fg0">
+                                            <rect key="frame" x="0.0" y="0.0" width="90" height="91"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRz-IR-Wjw">
+                                                    <rect key="frame" x="24" y="35.5" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dRz-IR-Wjw" firstAttribute="width" secondItem="OLW-Zs-fg0" secondAttribute="width" multiplier="0.466667" id="Tcf-2L-3uS"/>
+                                                <constraint firstItem="dRz-IR-Wjw" firstAttribute="centerX" secondItem="OLW-Zs-fg0" secondAttribute="centerX" id="aJS-V2-G2J"/>
+                                                <constraint firstItem="dRz-IR-Wjw" firstAttribute="centerY" secondItem="OLW-Zs-fg0" secondAttribute="centerY" id="eiH-Cq-KKv"/>
+                                                <constraint firstItem="dRz-IR-Wjw" firstAttribute="height" secondItem="OLW-Zs-fg0" secondAttribute="height" multiplier="0.225275" id="fvq-A7-UiS"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="90" height="91"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Sd5-fg-dzE"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="tuZ-wn-kNx"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBh-lg-Vyf">
+                                <rect key="frame" x="184" y="832" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dLe-k3-esn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="zBh-lg-Vyf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="FYj-af-r4i"/>
+                            <constraint firstAttribute="bottom" secondItem="x2c-HD-wOB" secondAttribute="bottom" id="HBO-c7-rLG"/>
+                            <constraint firstAttribute="trailing" secondItem="x2c-HD-wOB" secondAttribute="trailing" id="LN0-D9-BlB"/>
+                            <constraint firstItem="x2c-HD-wOB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fk3-9e-P1T"/>
+                            <constraint firstItem="zBh-lg-Vyf" firstAttribute="centerX" secondItem="x2c-HD-wOB" secondAttribute="centerX" id="gGZ-Rm-xft"/>
+                            <constraint firstItem="x2c-HD-wOB" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="yfA-Kw-NXb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="x2c-HD-wOB" id="hNE-T7-wd9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
+        </scene>
+    </scenes>
+</document>
